@@ -69,3 +69,39 @@ Topics included/covered
 
 1. [Introduction to AJAX](#1-introduction-to-ajax)
     - 1.1. [What is AJAX?](#11-what-is-ajax)
+    - 1.2. [Why use AJAX?](#12-why-use-ajax)
+    
+    
+ 1 Introduction to AJAX
+=====================
+
+1.1. What is AJAX?
+--------------------- 
+
+- `AJAX (Asynchronous JavaScript and XML)`
+- `AJAJ (Asynchronous JavaScript and JSON)`
+
+The process of **`sending and receiving data on the fly without page refresh/reload`** is known as AJAX
+
+- AJAX is not a new programming language - actually its a methodology or concepts or special way to bring JavaScript and XML (JSON) together to produce impressive results
+- AJAX is set of web technologies - just uses a combination of:
+  - A browser built-in `XMLHttpRequest object` to request data froma web server
+  - `JavaScript and HTML DOM` to display or use the data
+- AJAX allows the web page to `"talk/communicate"` with the server behind the scene (send and receive data asynchronously)
+- AJAX sends, receives and process information to or from the server without page refresh/reload (does not interfere with current web page/data) 
+- AJAX minimize the page refreshes, so web sites/pages/web apps shows more fluid/elegent-better experience to users
+- AJAX and JSON together provides the ability to JavaScript code to make HTTP requests to get data and update page content with new data
+- Now a days JSON has replaced XML for the most part and almost all dynamic websites uses/implements AJAX concepts and methodology
+
+
+1.2. Why use AJAX?
+--------------------- 
+
+- AJAX is prety fast - as it allows you to send and receive data asynchronously without reloading the web page
+- AJAX allows web pages to be updated asynchronously by exchanging data with a web server behind the scenes, this simply means that it is possible to update parts of a web page, without reloading the whole page
+- AJAX is used for building web based interactive applications that process user requests immediately - no page reload to bring data into your application
+- AJAX allows us to send and fetch only important/valuable part of data/information to/from the server not the entire page so it makes your application interactive and faster
+- XML is commonly used as the format for receiving server data, although any format, including plain text, can be used
+- AJAX is a web browser technology independent of web server software/platform
+- Data-driven as opposed to Page-driven methodology
+
