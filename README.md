@@ -79,6 +79,11 @@ Topics included/covered
  - 1.9. [Drawbacks of AJAX](#19-drawbacks-of-ajax)
  
 2. [AJAX XMLHttpRequest](#2-ajax-xmlhttprequest)
+  - 2.1. [What is XMLHttpRequest? (XHR)](#21-what-is-xmlhttprequest)
+  - 2.2. [Libraries and other Methods](#22-libraries-and-other-methods)
+  - 2.3. [XMLHttpRequest-loading JSON data](#23-xmlhttprequest-loading-json-data)
+  - 2.4. [XMLHttpRequest-loading web API data](#24-xmlhttprequest-loading-web-api-data)
+  - 2.5. [GET vs POST method](#25-get-vs-post-method)
 
 3. [AJAX Reference](#3-ajax-reference)
 
@@ -157,16 +162,16 @@ An asynchronous request **`doesn’t block the client`** i.e. browser is respons
 | Year | Achievements |
 | ---------------------------------------------- | ---------------------------------------------- |
 | Mid 1990s &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | Most Web sites were based on static HTML pages, each user action/interaction required a complete new page be loaded from the serve |
-| 1996 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | **`iframe tag`** was introduced by **`Internet Explorer`**; like the object element, it can load or fetch content asynchronously |
-| 1998 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | **`Microsoft Outlook Web Access team`** developed the concept behind the **`XMLHttpRequest`** scripting object |
-| 1999 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | **`XMLHttpRequest (XMLHTTP)`** shipped with **`Internet Explorer 5.0`** |
-| By year 2002 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | The functionality of the XMLHTTP ActiveX control in IE 5 was later implemented by **`Mozilla, Safari, Opera, Internet Explorer 7`** and other browsers as the XMLHttpRequest JavaScript object |
-| 2004 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | **`Google Gmail`**. Google made a wide deployment of standards-compliant, cross browser Ajax with Gmail |
-| 2004 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | October 2004 **`Kayak.com's`** public beta release was among the first large-scale e-commerce |
-| 2005 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | **AJAX term coined in 2005 by Jesse James Garrett!** The term Ajax was publicly used on **`18 February 2005 by Jesse James Garrett`** in an article titled **`Ajax: A New Approach to Web Applications`**, based on techniques used on Google pages |
-| 2005 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | Google Maps |
-| 2006 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | On 5 April 2006, the **`World Wide Web Consortium (W3C)`** released the first draft specification for the XMLHttpRequest object |
-| 2016 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | On 6 October 2016, the latest draft of the XMLHttpRequest object was published |
+| 1996  | **`iframe tag`** was introduced by **`Internet Explorer`**; like the object element, it can load or fetch content asynchronously |
+| 1998 | **`Microsoft Outlook Web Access team`** developed the concept behind the **`XMLHttpRequest`** scripting object |
+| 1999  | **`XMLHttpRequest (XMLHTTP)`** shipped with **`Internet Explorer 5.0`** |
+| By year 2002  | The functionality of the XMLHTTP ActiveX control in IE 5 was later implemented by **`Mozilla, Safari, Opera, Internet Explorer 7`** and other browsers as the XMLHttpRequest JavaScript object |
+| 2004  | **`Google Gmail`**. Google made a wide deployment of standards-compliant, cross browser Ajax with Gmail |
+| 2004  | October 2004 **`Kayak.com's`** public beta release was among the first large-scale e-commerce |
+| 2005  | **AJAX term coined in 2005 by Jesse James Garrett!** The term Ajax was publicly used on **`18 February 2005 by Jesse James Garrett`** in an article titled **`Ajax: A New Approach to Web Applications`**, based on techniques used on Google pages |
+| 2005  | Google Maps |
+| 2006  | On 5 April 2006, the **`World Wide Web Consortium (W3C)`** released the first draft specification for the XMLHttpRequest object |
+| 2016  | On 6 October 2016, the latest draft of the XMLHttpRequest object was published |
 
 - AJAX concepts are first implemented in the year 2004, a term coined publicly on **`18 February 2005 by Jesse James Garrett`** in an article titled **`Ajax: A New Approach to Web Applications`**
 
@@ -283,6 +288,73 @@ Many famous and widely used web applications use AJAX technology, like:
 
 2 AJAX XMLHttpRequest
 =====================
+
+2.1. What is XMLHttpRequest?
+--------------------- 
+2.1. What is XMLHttpRequest? (XHR)
+--------------------- 
+
+- `XMLHttpRequest` method helps to establish a connection with a specific URL and send or receive data
+- The `XMLHttpRequest` object is the key to AJAX, An object of `XMLHttpRequest` is used for asynchronous communication between client and server
+- The `XMLHttpRequest` object can be used to exchange data with a web server asynchronously (behind the scenes), so it's possible to update parts of a web page, without reloading the whole page
+- `XMLHttpRequest (XHR)` is an API in the form of an object whose methods transfer data between a web browser and a web server in the browser's JavaScript environment
+- `XMLHttpRequest (XHR)` can be used with other protocols than HTTP
+- `XMLHttpRequest (XHR)` works with data other than (JSON, plain text)
+
+### XMLHttpRequest performs following operations:
+
+- `Sends` data from the client in the background
+- `Receives` the data from the server
+- `Updates` the webpage without reloading it
+
+> **XMLHttpRequest Syntax**:
+
+```js 
+XMLHttpRequest.open ('http method type', 'url-path');
+
+XMLHttpRequest.open ('GET/POST', '.json file path or web api path');
+```
+
+2.2. Libraries and other Methods
+--------------------- 
+
+It's advisable to know plain vanilla JavaScript code to achieve AJAX with XMLHttpRequest.
+
+There are a bunch of other libraries, methods, and ways to make AJAX calls. Third-party libraries are great, time-saving and make things easier (less code we can write to achieve things):
+
+- jQuery (DOM manipulation library)
+- Axios 
+- Superagent
+- Fetch API
+- Prototype
+- Node HTTP
+
+2.3. XMLHttpRequest-loading JSON data
+--------------------- 
+
+
+2.4. XMLHttpRequest-loading web API data
+--------------------- 
+
+JSON Web API path: https://learnwebcode.github.io/json-example/animals-1.json
+
+2.5. GET vs POST method
+---------------------
+
+| Points | GET method | POST method | 
+| ------------------------------- | ------------------------------- | ------------------------------- |
+| **`Send data visibility`** &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | GET sends data in open/visible mode in browser URL as a parameter | GET sends data in invisible/hidden (secure) mode |
+| **`Encoding type`** | application/x-www-form-urlencoded | multipart/form-data or application/x-www-form-urlencoded Use multipart encoding for binary data |
+| **`Secure`** | GET is better for non-secure data, like id/filter string parameters, query strings in Google, etc. | GET is better for secure/passing important-sensitive data, like Auth-Authorisation, password, keys, etc. |
+| **`Data size`** | Sends data less than 2K of parameters, some servers handle up to 64K  | Sending a large amount of data to the server (POST has no size limitations) | 
+| **`Security`** | GET is less secure as compared to POST because data sent is part of the URL. So it's saved in browser history and server logs in plaintext | POST is a more safer than GET method because the parameters are not stored in browser history or web server logs | 
+| **`Cached`** | Can be cached | Can not be cached |
+| **`Usability`** | GET method can be used for sending data parameters (should not be used when sending passwords or other sensitive information) | POST method used when sending Auth-Authorisation, passwords or other sensitive information |
+| **`Form data length restrictions`** | As data is in the URL and URL length is restricted, A safe URL length limit is often 2048 characters but varies by browser and web server | No data length and data size restrictions | 
+| **`Form data type restrictions`** | Only ASCII characters allowed   | No restrictions! Binary data is also allowed | 
+| **`Hacked`** | Easier to hack for script kiddies, computer attackers or hackers | Difficult to hack |
+| **`Bookmarked`** | Can be bookmarked | Can be bookmarked |
+| **`Form method`** | GET is the default method in the form element | To use POST we need to specify it in HTML Forms as `method="POST"` |
 
 3 AJAX Reference
 =====================
