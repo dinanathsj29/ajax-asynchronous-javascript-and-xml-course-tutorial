@@ -332,11 +332,161 @@ There are a bunch of other libraries, methods, and ways to make AJAX calls. Thir
 2.3. XMLHttpRequest-loading JSON data
 --------------------- 
 
+> **Syntax & Example**: `2.3-loading-json-data/animals1.json`
+
+```json
+[
+  {
+    "name": "Meowsy1",
+    "species": "cat",
+    "foods": {
+      "likes": [
+        "tuna",
+        "catnip"
+      ],
+      "dislikes": [
+        "ham",
+        "zucchini"
+      ]
+    }
+  },
+  {
+    "name": "Barky1",
+    "species": "dog",
+    "foods": {
+      "likes": [
+        "bones",
+        "carrots"
+      ],
+      "dislikes": [
+        "tuna"
+      ]
+    }
+  },
+  {
+    "name": "Purrpaws1",
+    "species": "cat",
+    "foods": {
+      "likes": [
+        "mice"
+      ],
+      "dislikes": [
+        "cookies"
+      ]
+    }
+  }
+]
+```
+
+<hr/>
+
+> **Syntax & Example**: `2.3-loading-json-data.html`
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>loading json data</title>
+    
+    <script type="text/javascript" src="2.3-loading-json-data.js"></script>
+
+  </head>
+
+  <body>
+    
+  </body>
+
+</html>
+```
+
+<hr/>
+
+> **Syntax & Example**: `2.3-loading-json-data.js`
+
+```js
+console.log('2.3-loading-json-data.js loaded');
+
+var xhr = new XMLHttpRequest();
+xhr.open('GET','animals1.json');
+
+xhr.onload = function() {
+  let results = xhr.responseText;
+  console.log('string type of json:',results);
+  document.write('<h1>Load JSON data from .json file:</h1>');
+  document.write(results);
+
+  results = JSON.parse(xhr.responseText);
+  console.log('json object after parsing:',results);
+  
+  document.write('<h2>Load 0 th animal details:</h2>');
+  var animal0 = results[0].name;
+  document.write('Name : ' + animal0);
+}
+
+xhr.send();
+```
+
+> **Note**: *Its advisable to use local web-server like XAMP, MAMP or node/npm server utilities-packages like serve, http-server, static, local-web-server to avoid any - **CORS policy: Cross-origin requests errors***
+
 
 2.4. XMLHttpRequest-loading web API data
 --------------------- 
 
 JSON Web API path: https://learnwebcode.github.io/json-example/animals-1.json
+
+> **Syntax & Example**: `1.6.1-employee.json`
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>loading web api data</title>
+    
+    <script type="text/javascript" src="2.4-loading-json-web-api-data.js"></script>
+
+  </head>
+
+  <body>
+    
+  </body>
+
+</html>
+```
+
+<hr/>
+
+> **Syntax & Example**: `2.4-loading-json-web-api-data.js`
+
+```js
+console.log('2.4-loading-json-web-api-data.js loaded');
+
+var xhr = new XMLHttpRequest();
+xhr.open('GET','https://learnwebcode.github.io/json-example/animals-1.json');
+
+xhr.onload = function() {
+  let results = xhr.responseText;
+  console.log('string type of json:',results);
+  document.write('<h1>Load JSON data from .json file:</h1>');
+  document.write(results);
+
+  results = JSON.parse(xhr.responseText);
+  console.log('json object after parsing:',results);
+  
+  document.write('<h2>Load 1 st animal details:</h2>');
+  var animal1 = results[1].name;
+  document.write('Name : ' + animal1);
+}
+
+xhr.send();  
+```
 
 2.5. GET vs POST method
 ---------------------
