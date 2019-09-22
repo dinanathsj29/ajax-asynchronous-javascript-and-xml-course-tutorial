@@ -1,0 +1,8 @@
+
+<h3>### 2.6.1. XMLHttpRequest-onreadystatechange property</h3>
+
+<li>The XMLHttpRequest object has a special property called `onreadystatechange`</li>
+
+<li>`onreadystatechange` stores the function that will process the response from the server</li>
+
+<li>The `XMLHttpRequest.onreadystatechange` property stores a function, contains the event handler to be called when the `readystatechange` event is fired, that is every time the `readyState` property of the XMLHttpRequest changes</li>
