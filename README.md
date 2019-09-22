@@ -68,15 +68,15 @@ Topics included/covered
 =====================
 
 1. [Introduction to AJAX](#1-introduction-to-ajax)
- - 1.1. [What is AJAX?](#11-what-is-ajax)
- - 1.2. [Why use AJAX?](#12-why-use-ajax)
- - 1.3. [Synchronous vs Asynchronous](#13-synchronous-vs-asynchronous)
- - 1.4. [AJAX History](#14-ajax-history)
- - 1.5. [AJAX Technologies](#15-ajax-technologies)
- - 1.6. [How AJAX works?](#16-how-ajax-works)
- - 1.7. [AJAX Browser support](#17-ajax-browser-support)
- - 1.8. [Where AJAX is used? AJAX examples](#18-where-ajax-is-used-ajax-examples)
- - 1.9. [Drawbacks of AJAX](#19-drawbacks-of-ajax)
+  - 1.1. [What is AJAX?](#11-what-is-ajax)
+  - 1.2. [Why use AJAX?](#12-why-use-ajax)
+  - 1.3. [Synchronous vs Asynchronous](#13-synchronous-vs-asynchronous)
+  - 1.4. [AJAX History](#14-ajax-history)
+  - 1.5. [AJAX Technologies](#15-ajax-technologies)
+  - 1.6. [How AJAX works?](#16-how-ajax-works)
+  - 1.7. [AJAX Browser support](#17-ajax-browser-support)
+  - 1.8. [Where AJAX is used? AJAX examples](#18-where-ajax-is-used-ajax-examples)
+  - 1.9. [Drawbacks-Disadvantages of AJAX](#19-drawbacks-of-ajax)
  
 2. [AJAX XMLHttpRequest](#2-ajax-xmlhttprequest)
   - 2.1. [What is XMLHttpRequest? (XHR)](#21-what-is-xmlhttprequest)
@@ -84,8 +84,9 @@ Topics included/covered
   - 2.3. [XMLHttpRequest-loading JSON data](#23-xmlhttprequest-loading-json-data)
   - 2.4. [XMLHttpRequest-loading web API data](#24-xmlhttprequest-loading-web-api-data)
   - 2.5. [GET vs POST method](#25-get-vs-post-method)
+  - 2.6. [XMLHttpRequest-onreadystatechange](#26-xmlhttprequest-onreadystatechange)
 
-3. [AJAX Reference](#3-ajax-reference)
+3. [AJAX Reference and Resources](#3-ajax-reference-and-resources)
 
 1 Introduction to AJAX
 =====================
@@ -98,6 +99,7 @@ Topics included/covered
 
 The process of **`sending and receiving data on the fly without page refresh/reload`** is known as AJAX
 
+- AJAX stands for Asynchronous JavaScript and XML enable web applications to retrieve data from the server asynchronously
 - AJAX is *not a new programming language* - actually its a methodology or concepts or special way to bring JavaScript and XML (now a days JSON) together to produce impressive results
 - **AJAX is set of web technologies** - just uses a combination of:
  - A browser built-in `XMLHttpRequest object` to request data from a web server
@@ -105,6 +107,7 @@ The process of **`sending and receiving data on the fly without page refresh/rel
  - It is a group of inter-related technologies like **`JavaScript, DOM, XML/JSON, HTML/XHTML, CSS, XMLHttpRequest`** etc.
 - AJAX allows the web page to `"talk/communicate"` with the server behind the scene (send and receive data asynchronously)
 - AJAX sends, receives and process information to or from the server without page refresh/reload (does not interfere with current web page/data) 
+- Web application using AJAX enables partial page updates, ie. only the related section of the page is updated, without reloading the entire page
 - AJAX minimize the page refreshes, so web sites/pages/web apps show more fluid/elegant-better experience to users
 - AJAX and JSON together provide the ability to JavaScript code to make HTTP requests to get data and update page content with new data
 - Now a days **`JSON`** has replaced `XML` for the most part and almost all dynamic websites use/implements AJAX concepts and methodology
@@ -114,7 +117,10 @@ The process of **`sending and receiving data on the fly without page refresh/rel
 --------------------- 
 
 - **`AJAX is pretty fast`** - as it allows you to send and receive data asynchronously without reloading the web page
+- **`AJAX applications are non-blocking`** - as AJAX requests are asynchronous, we don't have to wait for the request processing to complete
 - **`AJAX allows web pages to be updated asynchronously`** by exchanging data with a web server behind the scenes, this simply means that it is possible to update parts of a web page, without reloading the whole page
+- **`Better performance and reduced network traffic`** - AJAX helps to send and receive only the required data so better performance
+- **`No refresh-reload/No screen flicker`** - only a portion of the page is updated avoiding full page refresh/reload and screen flickering
 - AJAX is used for building web-based interactive applications that process user requests immediately - **`no page reload`** to bring data into your application
 - AJAX allows us to send and fetch only important/valuable part of data/information to/from the server, not the entire page so it **`makes your application interactive and faster`**
 - XML is commonly used as the format for receiving server data, although **`any data exchange/interchange format can be used`** including JSON, plain text
@@ -162,16 +168,16 @@ An asynchronous request **`doesn’t block the client`** i.e. browser is respons
 | Year | Achievements |
 | ---------------------------------------------- | ---------------------------------------------- |
 | Mid 1990s &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | Most Web sites were based on static HTML pages, each user action/interaction required a complete new page be loaded from the serve |
-| 1996  | **`iframe tag`** was introduced by **`Internet Explorer`**; like the object element, it can load or fetch content asynchronously |
+| 1996 | **`iframe tag`** was introduced by **`Internet Explorer`**; like the object element, it can load or fetch content asynchronously |
 | 1998 | **`Microsoft Outlook Web Access team`** developed the concept behind the **`XMLHttpRequest`** scripting object |
-| 1999  | **`XMLHttpRequest (XMLHTTP)`** shipped with **`Internet Explorer 5.0`** |
-| By year 2002  | The functionality of the XMLHTTP ActiveX control in IE 5 was later implemented by **`Mozilla, Safari, Opera, Internet Explorer 7`** and other browsers as the XMLHttpRequest JavaScript object |
-| 2004  | **`Google Gmail`**. Google made a wide deployment of standards-compliant, cross browser Ajax with Gmail |
-| 2004  | October 2004 **`Kayak.com's`** public beta release was among the first large-scale e-commerce |
-| 2005  | **AJAX term coined in 2005 by Jesse James Garrett!** The term Ajax was publicly used on **`18 February 2005 by Jesse James Garrett`** in an article titled **`Ajax: A New Approach to Web Applications`**, based on techniques used on Google pages |
-| 2005  | Google Maps |
-| 2006  | On 5 April 2006, the **`World Wide Web Consortium (W3C)`** released the first draft specification for the XMLHttpRequest object |
-| 2016  | On 6 October 2016, the latest draft of the XMLHttpRequest object was published |
+| 1999 | **`XMLHttpRequest (XMLHTTP)`** shipped with **`Internet Explorer 5.0`** |
+| By year 2002 | The functionality of the XMLHTTP ActiveX control in IE 5 was later implemented by **`Mozilla, Safari, Opera, Internet Explorer 7`** and other browsers as the XMLHttpRequest JavaScript object |
+| 2004 | **`Google Gmail`**. Google made a wide deployment of standards-compliant, cross browser Ajax with Gmail |
+| 2004 | October 2004 **`Kayak.com's`** public beta release was among the first large-scale e-commerce |
+| 2005 | **AJAX term coined in 2005 by Jesse James Garrett!** The term Ajax was publicly used on **`18 February 2005 by Jesse James Garrett`** in an article titled **`Ajax: A New Approach to Web Applications`**, based on techniques used on Google pages |
+| 2005 | Google Maps |
+| 2006 | On 5 April 2006, the **`World Wide Web Consortium (W3C)`** released the first draft specification for the XMLHttpRequest object |
+| 2016 | On 6 October 2016, the latest draft of the XMLHttpRequest object was published |
 
 - AJAX concepts are first implemented in the year 2004, a term coined publicly on **`18 February 2005 by Jesse James Garrett`** in an article titled **`Ajax: A New Approach to Web Applications`**
 
@@ -267,9 +273,9 @@ Browser does not support AJAX, simply means that the `browser does not support t
 1.8. Where AJAX is used? AJAX examples
 --------------------- 
 
-Many famous and widely used web applications use AJAX technology, like:
+Many famous and widely used web applications use AJAX technology (to Save, Scroll, Autocomplete, AutoSave, etc.), like:
 - Google Gmail, Google Search, Google Maps
-- Facebook
+- Facebook 
 - Twitter
 - Travel Sites
 - Youtube
@@ -280,10 +286,14 @@ Many famous and widely used web applications use AJAX technology, like:
 1.9. Drawbacks of AJAX
 --------------------- 
 
+1.9. Disadvantages of AJAX
+--------------------- 
+
 - Any browser does not support JavaScript or XMLHttpRequest, or has this functionality disabled, will not be able to properly use AJAX-based/dependent pages
 - Some Web applications that use AJAX are built in a way that cannot be read by screen-reading technologies, such as JAWS (In such a case the WAI-ARIA standards provide a way to provide hints)
 - Screen readers may still not be able to properly read the dynamically generated content
 - The asynchronous callback-style of programming required can lead to complex code that is hard to maintain, to debug and to test
+- AJAX requests cannot be bookmarked easily
 
 
 2 AJAX XMLHttpRequest
@@ -315,6 +325,7 @@ XMLHttpRequest.open ('http method type', 'url-path');
 XMLHttpRequest.open ('GET/POST', '.json file path or web api path');
 ```
 
+
 2.2. Libraries and other Methods
 --------------------- 
 
@@ -322,12 +333,14 @@ It's advisable to know plain vanilla JavaScript code to achieve AJAX with XMLHtt
 
 There are a bunch of other libraries, methods, and ways to make AJAX calls. Third-party libraries are great, time-saving and make things easier (less code we can write to achieve things):
 
-- jQuery (DOM manipulation library)
+- jQuery (DOM manipulation library) - $ajax(), $load, $get, $post
+- Angular - HttpClient
 - Axios 
 - Superagent
 - Fetch API
 - Prototype
 - Node HTTP
+
 
 2.3. XMLHttpRequest-loading JSON data
 --------------------- 
@@ -336,45 +349,45 @@ There are a bunch of other libraries, methods, and ways to make AJAX calls. Thir
 
 ```json
 [
-  {
-    "name": "Meowsy1",
-    "species": "cat",
-    "foods": {
-      "likes": [
-        "tuna",
-        "catnip"
-      ],
-      "dislikes": [
-        "ham",
-        "zucchini"
-      ]
-    }
-  },
-  {
-    "name": "Barky1",
-    "species": "dog",
-    "foods": {
-      "likes": [
-        "bones",
-        "carrots"
-      ],
-      "dislikes": [
-        "tuna"
-      ]
-    }
-  },
-  {
-    "name": "Purrpaws1",
-    "species": "cat",
-    "foods": {
-      "likes": [
-        "mice"
-      ],
-      "dislikes": [
-        "cookies"
-      ]
-    }
-  }
+ {
+ "name": "Meowsy1",
+ "species": "cat",
+ "foods": {
+ "likes": [
+ "tuna",
+ "catnip"
+ ],
+ "dislikes": [
+ "ham",
+ "zucchini"
+ ]
+ }
+ },
+ {
+ "name": "Barky1",
+ "species": "dog",
+ "foods": {
+ "likes": [
+ "bones",
+ "carrots"
+ ],
+ "dislikes": [
+ "tuna"
+ ]
+ }
+ },
+ {
+ "name": "Purrpaws1",
+ "species": "cat",
+ "foods": {
+ "likes": [
+ "mice"
+ ],
+ "dislikes": [
+ "cookies"
+ ]
+ }
+ }
 ]
 ```
 
@@ -386,19 +399,19 @@ There are a bunch of other libraries, methods, and ways to make AJAX calls. Thir
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>loading json data</title>
-    
-    <script type="text/javascript" src="2.3-loading-json-data.js"></script>
+ <head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <title>loading json data</title>
+ 
+ <script type="text/javascript" src="2.3-loading-json-data.js"></script>
 
-  </head>
+ </head>
 
-  <body>
-    
-  </body>
+ <body>
+ 
+ </body>
 
 </html>
 ```
@@ -414,17 +427,17 @@ var xhr = new XMLHttpRequest();
 xhr.open('GET','animals1.json');
 
 xhr.onload = function() {
-  let results = xhr.responseText;
-  console.log('string type of json:',results);
-  document.write('<h1>Load JSON data from .json file:</h1>');
-  document.write(results);
+ let results = xhr.responseText;
+ console.log('string type of json:',results);
+ document.write('<h1>Load JSON data from .json file:</h1>');
+ document.write(results);
 
-  results = JSON.parse(xhr.responseText);
-  console.log('json object after parsing:',results);
-  
-  document.write('<h2>Load 0 th animal details:</h2>');
-  var animal0 = results[0].name;
-  document.write('Name : ' + animal0);
+ results = JSON.parse(xhr.responseText);
+ console.log('json object after parsing:',results);
+ 
+ document.write('<h2>Load 0 th animal details:</h2>');
+ var animal0 = results[0].name;
+ document.write('Name : ' + animal0);
 }
 
 xhr.send();
@@ -444,19 +457,19 @@ JSON Web API path: https://learnwebcode.github.io/json-example/animals-1.json
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>loading web api data</title>
-    
-    <script type="text/javascript" src="2.4-loading-json-web-api-data.js"></script>
+ <head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <title>loading web api data</title>
+ 
+ <script type="text/javascript" src="2.4-loading-json-web-api-data.js"></script>
 
-  </head>
+ </head>
 
-  <body>
-    
-  </body>
+ <body>
+ 
+ </body>
 
 </html>
 ```
@@ -472,21 +485,22 @@ var xhr = new XMLHttpRequest();
 xhr.open('GET','https://learnwebcode.github.io/json-example/animals-1.json');
 
 xhr.onload = function() {
-  let results = xhr.responseText;
-  console.log('string type of json:',results);
-  document.write('<h1>Load JSON data from .json file:</h1>');
-  document.write(results);
+ let results = xhr.responseText;
+ console.log('string type of json:',results);
+ document.write('<h1>Load JSON data from .json file:</h1>');
+ document.write(results);
 
-  results = JSON.parse(xhr.responseText);
-  console.log('json object after parsing:',results);
-  
-  document.write('<h2>Load 1 st animal details:</h2>');
-  var animal1 = results[1].name;
-  document.write('Name : ' + animal1);
+ results = JSON.parse(xhr.responseText);
+ console.log('json object after parsing:',results);
+ 
+ document.write('<h2>Load 1 st animal details:</h2>');
+ var animal1 = results[1].name;
+ document.write('Name : ' + animal1);
 }
 
-xhr.send();  
+xhr.send(); 
 ```
+
 
 2.5. GET vs POST method
 ---------------------
@@ -496,15 +510,128 @@ xhr.send();
 | **`Send data visibility`** &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | GET sends data in open/visible mode in browser URL as a parameter | GET sends data in invisible/hidden (secure) mode |
 | **`Encoding type`** | application/x-www-form-urlencoded | multipart/form-data or application/x-www-form-urlencoded Use multipart encoding for binary data |
 | **`Secure`** | GET is better for non-secure data, like id/filter string parameters, query strings in Google, etc. | GET is better for secure/passing important-sensitive data, like Auth-Authorisation, password, keys, etc. |
-| **`Data size`** | Sends data less than 2K of parameters, some servers handle up to 64K  | Sending a large amount of data to the server (POST has no size limitations) | 
+| **`Data size`** | Sends data less than 2K of parameters, some servers handle up to 64K | Sending a large amount of data to the server (POST has no size limitations) | 
 | **`Security`** | GET is less secure as compared to POST because data sent is part of the URL. So it's saved in browser history and server logs in plaintext | POST is a more safer than GET method because the parameters are not stored in browser history or web server logs | 
 | **`Cached`** | Can be cached | Can not be cached |
 | **`Usability`** | GET method can be used for sending data parameters (should not be used when sending passwords or other sensitive information) | POST method used when sending Auth-Authorisation, passwords or other sensitive information |
 | **`Form data length restrictions`** | As data is in the URL and URL length is restricted, A safe URL length limit is often 2048 characters but varies by browser and web server | No data length and data size restrictions | 
-| **`Form data type restrictions`** | Only ASCII characters allowed   | No restrictions! Binary data is also allowed | 
+| **`Form data type restrictions`** | Only ASCII characters allowed | No restrictions! Binary data is also allowed | 
 | **`Hacked`** | Easier to hack for script kiddies, computer attackers or hackers | Difficult to hack |
 | **`Bookmarked`** | Can be bookmarked | Can be bookmarked |
 | **`Form method`** | GET is the default method in the form element | To use POST we need to specify it in HTML Forms as `method="POST"` |
 
-3 AJAX Reference
+
+2.6. XMLHttpRequest-onreadystatechange
+---------------------
+
+### 2.6.1. XMLHttpRequest-onreadystatechange property
+- The XMLHttpRequest object has a special property called `onreadystatechange`
+- `onreadystatechange` stores the function that will process the response from the server
+- The `XMLHttpRequest.onreadystatechange` property stores a function, contains the event handler to be called when the `readystatechange` event is fired, that is every time the `readyState` property of the XMLHttpRequest changes
+
+### 2.6.2. XMLHttpRequest-readystate property
+
+- The `XMLHttpRequest` object has another property called `readyState`
+- `readyState` is where the status of our server's response is stored 
+- Each time the `readyState` changes then our `onreadystatechange` function executes, The response can be:
+ - processing, 
+ - downloading or 
+ - completed
+
+| Property | Description | 
+| ------------------------------- | ------------------------------- |
+| onreadystatechange | Defines a function to be called when the readyState property changes |
+| readyState | Holds/Stores the status of the XMLHttpRequest, readyState Status can be: <li>0: request not initialized</li> <li>1: server connection established</li> <li>2: request received</li> <li>3: processing request</li> <li>4: request finished and response is ready</li> | 
+| status | The status property and the statusText property holds the status of the XMLHttpRequest object, Status can be: <li>200: "OK"</li> <li>403: "Forbidden"</li> <li>404: "Page not found"</li> |
+| statusText | The status property and the statusText property holds the status of the XMLHttpRequest object, Returns the status-text (e.g. "OK" or "Not Found") |
+
+> **Note**: When the property `readyState is 4` that means the response is complete and we can get our data
+
+### 2.6.3. XMLHttpRequest-responsetext property
+
+- We can retrieve the server's response by using the `responseText` property
+- Using a little bit of Javascript and HTML forms we can change our text box or results equal responseText
+
+
+> **Syntax & Example**: `2.6-onreadystatechange.html`
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+ <head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <title>onreadystatechange</title>
+ 
+ <script type="text/javascript" src="2.6-onreadystatechange.js"></script>
+
+ </head>
+
+ <body>
+
+ <h1>The XMLHttpRequest Object - onreadystatechange</h1>
+
+ <button type="button" onclick="loadData()">Load Content</button>
+ 
+ <div id="textContainer"></div>
+
+ </body>
+
+</html>
+```
+
+<hr/>
+
+> **Syntax & Example**: `2.6-onreadystatechange.js`
+
+```js
+console.log('2.6-onreadystatechange.js loaded');
+
+function loadData() {
+
+ var xhr = new XMLHttpRequest();
+ xhr.open('GET','data.txt',true);
+
+ xhr.onreadystatechange = function() {
+ if(this.readyState == 4 && this.status == 200) {
+ // responseText and response both are same/similar
+ let responseText = xhr.responseText;
+ let response = xhr.response;
+ console.log('responseText',responseText);
+ console.log('response',response);
+
+ // document.getElementById("textContainer").innerHTML = this.responseText;
+ document.getElementById("textContainer").innerText = this.responseText;
+
+ }
+ }
+
+ xhr.send();
+
+}
+
+```
+
+<hr/>
+
+> **Syntax & Example**: `data.txt`
+
+```
+<h3>### 2.6.1. XMLHttpRequest-onreadystatechange property</h3>
+
+<li>The XMLHttpRequest object has a special property called `onreadystatechange`</li>
+
+<li>`onreadystatechange` stores the function that will process the response from the server</li>
+
+<li>The `XMLHttpRequest.onreadystatechange` property stores a function, contains the event handler to be called when the `readystatechange` event is fired, that is every time the `readyState` property of the XMLHttpRequest changes</li>
+```
+
+
+3 AJAX Reference and Resources
 =====================
+
+> axios - https://github.com/axios/axios
+
+> https://reqres.in/
