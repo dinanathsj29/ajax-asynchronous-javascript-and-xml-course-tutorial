@@ -91,10 +91,13 @@ Topics included/covered
   - 3.2. [XMLHttpRequest-Get Post Data-Advanced](#32-xmlhttprequest-get-post-data-advanced)
 
 4. [JavaScript Http Request with fetch() API and Promises](#4-javascript-http-request-with-fetch()-api-and-promises)
-  - 4.1. [Introduction to fetch() api](#41-introduction-to-fetch()-api)
-  - 4.2. [fetch() api demo example](#42-fetch()-api-demo-example)
+  - 4.1. [Introduction to fetch() API](#41-introduction-to-fetch()-api)
+  - 4.2. [fetch() API demo example](#42-fetch()-api-demo-example)
 
-5. [JavaScript Http Request with Axiox library](#5-javascript-http-request-with-axiox-library) 
+5. [JavaScript Http Request with Axios library](#5-javascript-http-request-with-axios-library) 
+
+  - 5.1. [Introduction to fetch() API](#51-introduction-to-axios)
+  - 5.2. [Axios demo example](#52-axios-demo-example)
 
 6. [AJAX Reference and Resources](#6-ajax-reference-and-resources)
 
@@ -332,7 +335,7 @@ Many famous and widely used web applications use AJAX technology (to Save, Scrol
 ```js 
 XMLHttpRequest.open ('http method type', 'url-path');
 
-XMLHttpRequest.open ('GET/POST', '.json file path or web api path');
+XMLHttpRequest.open ('GET/POST', '.json file path or web API path');
 ```
 
 
@@ -471,7 +474,7 @@ JSON Web API path: https://learnwebcode.github.io/json-example/animals-1.json
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <meta http-equiv="X-UA-Compatible" content="ie=edge">
- <title>loading web api data</title>
+ <title>loading web API data</title>
  
  <script type="text/javascript" src="2.4-loading-json-web-api-data.js"></script>
 
@@ -867,7 +870,7 @@ postButton.addEventListener('click', fn_postData);
 4 JavaScript Http Request with fetch() API and Promises
 =====================
 
-4.1. Introduction to fetch() api
+4.1. Introduction to fetch() API
 ---------------------
 - Fetch is a new, modern, promise-based API that lets us do Ajax requests without all the unnecessary complications associated with XMLHttpRequest
 - `fetch() API` is a modern replacement for XMLHttpRequest, addition to the browser, better than xmlHttpRequest 
@@ -877,7 +880,7 @@ postButton.addEventListener('click', fn_postData);
 - Browser support: Support for Fetch is pretty good! All major browsers (exception of Opera Mini and old IE) support it natively, which means we can safely use it in our projects (older browser does not support!)
 
 
-4.2. fetch() api demo example
+4.2. fetch() API demo example
 ---------------------
 
 > **Syntax & Example**: `4.2-fetch-api.html`
@@ -933,16 +936,16 @@ const fn_getData = () => {
 
   fetch('https://reqres.in/api/users').then(respenseResult => {
     console.log('respenseResult:', respenseResult);
+    // to convert response body: ReadableStream to json
     return respenseResult.json();
   })
-    .then(respenseResultData => {
-      console.log('respenseResultData:', respenseResultData);
+  .then(respenseResultData => {
+    console.log('respenseResultData:', respenseResultData);
 
-      document.getElementsByClassName('user-name')[0].innerHTML = respenseResultData.data[0].first_name + ' ' + respenseResultData.data[0].last_name;
-      document.getElementsByClassName('user-email')[0].innerHTML = respenseResultData.data[0].email;
-      document.getElementsByClassName('user-image')[0].src = respenseResultData.data[0].avatar;
-    });
-
+    document.getElementsByClassName('user-name')[0].innerHTML = respenseResultData.data[0].first_name + ' ' + respenseResultData.data[0].last_name;
+    document.getElementsByClassName('user-email')[0].innerHTML = respenseResultData.data[0].email;
+    document.getElementsByClassName('user-image')[0].src = respenseResultData.data[0].avatar;
+  });
 }
 
 // define function to post/send data
@@ -976,14 +979,227 @@ getButton.addEventListener('click', fn_getData);
 postButton.addEventListener('click', fn_postData);
 ```
 
+<hr/>
 
-5 JavaScript Http Request with Axiox library
+> **Syntax & Example**: `4.2-fetch-api-advanced.html`
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>4.2-fetch-api-advanced</title>
+    
+    <link type="text/css" rel="stylesheet" href="styles.css">
+    <!-- Without async or defer , browser will run your script immediately, before rendering the elements that's below your script tag. -->
+    <script type="text/javascript" src="4.2-fetch-api-advanced.js" defer></script>
+
+  </head>
+
+  <body>
+
+    <h1><center>4.2-fetch-api-advanced</center></h1>
+    <section class="button-container">
+      <button id="getButton" class="button">GET DATA</button>
+      <button id="postButton" class="button">POST LOGIN DATA</button>
+    </section>
+
+    <section class="user-container">
+      <h1 class="user-name"></h1>
+      <span class="user-email"></span> <br/> <br/>
+      <img class="user-image" src=" " />
+    </section>
+   
+  </body>
+
+</html>
+```
+
+<hr/>
+
+> **Syntax & Example**: `4.2-fetch-api-advanced.js`
+
+```javascript
+console.log('4.2-fetch-api-advanced.js loaded');
+
+// get buttons from html/DOM
+const getButton = document.getElementById('getButton');
+const postButton = document.getElementById('postButton');
+
+// common function to send receive http call
+const fn_sendhttpRequest = (httpMethod, httpUrl, data) => {
+
+  return fetch(httpUrl, {
+    method: httpMethod,
+    body: JSON.stringify(data),
+    headers: data ? {'Content-type': 'application/json'} : {}
+  }).then(respenseResult => { 
+    console.log('respenseResult:', respenseResult);
+    if (respenseResult.status >= 400) {
+      return respenseResult.json().then(errResponseData => {
+        const error = new Error('Please verify...something went wrong!');
+        error.data = errResponseData;
+        throw error;
+      })
+    }
+    // to convert response body: ReadableStream to json
+    return respenseResult.json();
+  })
+
+}
+
+// define function to get data
+const fn_getData = () => {
+  console.log('getButton clicked - in fn_getData');
+
+  fn_sendhttpRequest('GET', 'https://reqres.in/api/users')
+  .then(respenseResultData => {
+    console.log('respenseResultData:', respenseResultData);
+
+    document.getElementsByClassName('user-name')[0].innerHTML = respenseResultData.data[0].first_name + ' ' + respenseResultData.data[0].last_name;
+    document.getElementsByClassName('user-email')[0].innerHTML = respenseResultData.data[0].email;
+    document.getElementsByClassName('user-image')[0].src = respenseResultData.data[0].avatar;
+  });
+
+}
+
+// define function to post/send data
+const fn_postData = () => {
+  console.log('postButton clicked - in fn_postData');
+
+  const postLoginData = {
+    email: "eve.holt@reqres.in",
+    password: "pistol"
+  };
+
+  fn_sendhttpRequest('POST', 'https://reqres.in/api/register', postLoginData)
+  .then(respenseResultData => {
+    console.log('respenseResultData:', respenseResultData);
+  })
+  .catch(err => {
+    console.error('Request failed', err)
+  })
+
+}
+
+// add event listener to button
+getButton.addEventListener('click', fn_getData);
+postButton.addEventListener('click', fn_postData);
+```
+
+5 JavaScript Http Request with Axios library
 =====================
+
+5.1. Introduction to Axios
+---------------------
+
+- Axios is an open-source library that allows us to easily make HTTP requests
+- Axios is a third-party JavaScript library which wraps xmlHttpRequest, based on Promise API and makes working with AJAX much easier
+- Axios is a Promise-based HTTP client for JavaScript which can be used in your front-end application, also in Node.js backend
+- Browser support: It supports all modern browsers, including support for IE8 and higher! All major browsers support it, as xmlHttpRequest is the base of Axios
+
+
+5.2. Axios demo example
+---------------------
+
+> **Syntax & Example**: `5.2-axios.html`
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>5.2-axios</title>
+    
+    <link type="text/css" rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="axios.min.js" defer></script>
+    <!-- Without async or defer , browser will run your script immediately, before rendering the elements that's below your script tag. -->
+    <script type="text/javascript" src="5.2-axios.js" defer></script>
+
+  </head>
+
+  <body>
+
+    <h1><center>5.2-axios</center></h1>
+    <section class="button-container">
+      <button id="getButton" class="button">GET DATA</button>
+      <button id="postButton" class="button">POST LOGIN DATA</button>
+    </section>
+
+    <section class="user-container">
+      <h1 class="user-name"></h1>
+      <span class="user-email"></span> <br/> <br/>
+      <img class="user-image" src=" " />
+    </section>
+   
+  </body>
+
+</html>
+```
+
+<hr/>
+
+> **Syntax & Example**: `5.2-axios.js`
+
+```javascript
+console.log('5.2-axios.js loaded');
+
+// get buttons from html/DOM
+const getButton = document.getElementById('getButton');
+const postButton = document.getElementById('postButton');
+
+// define function to get data
+const fn_getData = () => {
+  console.log('getButton clicked - in fn_getData');
+
+  axios.get('https://reqres.in/api/users').then(respenseResultData => {
+    console.log('respenseResultData:', respenseResultData);
+
+    document.getElementsByClassName('user-name')[0].innerHTML = respenseResultData.data.data[0].first_name + ' ' + respenseResultData.data.data[0].last_name;
+    document.getElementsByClassName('user-email')[0].innerHTML = respenseResultData.data.data[0].email;
+    document.getElementsByClassName('user-image')[0].src = respenseResultData.data.data[0].avatar;
+  })
+
+}
+
+// define function to post/send data
+const fn_postData = () => {
+  console.log('postButton clicked - in fn_postData');
+
+  const postLoginData = {
+    email: "eve.holt@reqres.in",
+    password: "pistol"
+  };
+
+  axios.post('https://reqres.in/api/register', postLoginData, {
+    headers: {
+      'Content-type': 'application/json'
+    }
+  }).then(respenseResultData => {
+    console.log('respenseResultData:', respenseResultData);
+    console.log('respenseResultData.data:', respenseResultData.data);
+  }).catch(err => {
+    console.error('Request failed...Something went wrong :', err);
+    console.error(err, err.response.data);
+  })
+
+}
+
+// add event listener to button
+getButton.addEventListener('click', fn_getData);
+postButton.addEventListener('click', fn_postData);
+```
 
 
 6 AJAX Reference and Resources
 =====================
 
-> axios - https://github.com/axios/axios
-
 > https://reqres.in/
+
+> axios - https://github.com/axios/axios
